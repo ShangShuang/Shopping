@@ -149,14 +149,11 @@ public class HttpClient {
         }
 
         Log.e("TAG", "createObservable: " + baseUrl);
-
-        Retrofit retrofit = HttpsManager.getInstance()
-                .getRetrofit(baseUrl, time, timeUnit);
-        ApiService apiService = retrofit.create(ApiService.class);
+        ApiService apiService = HttpsManager.getInstance().getRetrofit(baseUrl, time, timeUnit).create(ApiService.class);
         switch (method) {
             case POST:
                 if (isJson) {
-                    observable = apiService.postJson(apiUrl, requestBody, headers);
+                    observable = apiService.postjson(apiUrl, requestBody, headers);
                 } else {
                     observable = apiService.post(apiUrl, params, headers);
                 }

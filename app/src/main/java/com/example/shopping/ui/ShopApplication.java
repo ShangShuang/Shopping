@@ -1,4 +1,4 @@
-package com.example.shopping;
+package com.example.shopping.ui;
 
 import android.app.Application;
 
@@ -6,7 +6,9 @@ import com.example.httplibrary.HttpConstant;
 import com.example.httplibrary.HttpGlobalConfig;
 import com.squareup.leakcanary.LeakCanary;
 import com.tencent.bugly.crashreport.CrashReport;
-import com.umeng.commonsdk.UMConfigure;
+
+import jy.com.libumengsharelogin.UMUtils;
+
 
 public class ShopApplication extends Application {
     @Override
@@ -18,9 +20,12 @@ public class ShopApplication extends Application {
         youMeng();
         //内存泄漏工具
         leakCanary();
+        UMUtils.initUmeng(this);
+        UMUtils.isWeixinAvilible(this);
+        UMUtils.isAliPayInstalled(this);
 
         HttpGlobalConfig.getInsance()
-                .setBaseUrl("https://wanandroid.com/")
+                .setBaseUrl("http://169.254.1.54:8080/kotlin/")
                 .setTimeout(HttpConstant.TIME_OUT)
                 .setTimeUnit(HttpConstant.TIME_UNIT)
                 .setShowLog(true)
@@ -39,7 +44,7 @@ public class ShopApplication extends Application {
     }
 
     private void youMeng() {
-        UMConfigure.init(this, "5f2be63bd30932215475a596", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
+        //UMConfigure.init(this, "5f2be63bd30932215475a596", "Umeng", UMConfigure.DEVICE_TYPE_PHONE, "");
     }
 
     private void tengXunBug() {

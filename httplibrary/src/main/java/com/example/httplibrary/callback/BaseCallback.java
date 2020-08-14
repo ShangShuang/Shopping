@@ -9,13 +9,14 @@ import com.google.gson.JsonElement;
 public abstract class BaseCallback<T> extends BaseObserver {
     //解析成功的标志
     boolean callSuccess = true;
+
     @Override
     public void onNext(Object o) {
         super.onNext(o);
-        Log.e("TAG", "onNext: " + o.toString());
+        Log.e("111", "onNext: " + o.toString());
         //返回的是个json串
-        T parse = parse(new Gson().toJson(o));
-//        Log.e("TAG", "onNext: " + parse.toString());
+        T parse = parse((String) o);
+        Log.e("111", "onNext: " + parse.toString());
         if (callSuccess && isCodeSuccess()) {
             onSuccess(parse);
         }

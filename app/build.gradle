@@ -4,7 +4,7 @@ android {
     compileSdkVersion 29
     buildToolsVersion "29.0.3"
     defaultConfig {
-        applicationId "com.example.shopping"
+        applicationId "com.greenorange.zhiwozhixiang"
         minSdkVersion 22
         targetSdkVersion 29
         versionCode 1
@@ -14,6 +14,23 @@ android {
         ndk {
             // 设置支持的SO库架构
             abiFilters 'armeabi' //, 'x86', 'armeabi-v7a', 'x86_64', 'arm64-v8a'
+        }
+    }
+    signingConfigs {
+        release {
+            storeFile file('zhiwozhixiang.jks')
+            keyAlias "bjqjqc"
+//            keyPassword System.getenv("zwzx_key_store_pw")
+//            storePassword System.getenv("zwzx_key_store_pw2")
+            keyPassword "zhiwozhixiang@"
+            storePassword "zhiwozhixiang@"
+        }
+
+        debug {
+            storeFile file('zhiwozhixiang.jks')
+            keyAlias "bjqjqc"
+            keyPassword "zhiwozhixiang@"
+            storePassword "zhiwozhixiang@"
         }
     }
     buildTypes {
@@ -44,15 +61,15 @@ dependencies {
     // 下面各SDK根据宿主App是否使用相关业务按需引入。
     // OAID目前为目前国内市场主流的Android Q设备标识，可根据需要选择。
     // 友盟统计SDK
-    implementation 'com.umeng.umsdk:common:9.1.0' // (必选)
-    implementation 'com.umeng.umsdk:game:9.1.0+G' // 游戏统计SDK依赖(可选)
-    implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
-    implementation 'com.umeng.umsdk:crash:0.0.4' // native crash包依赖(必选)
-
-    implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
-    implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
-    implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
-    implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
+//    implementation 'com.umeng.umsdk:common:9.1.0' // (必选)
+//    implementation 'com.umeng.umsdk:game:9.1.0+G' // 游戏统计SDK依赖(可选)
+//    implementation 'com.umeng.umsdk:asms:1.1.3' // asms包依赖(必选)
+//    implementation 'com.umeng.umsdk:crash:0.0.4' // native crash包依赖(必选)
+//
+//    implementation 'com.umeng.umsdk:oaid_lenovo:1.0.0' // (可选)
+//    implementation 'com.umeng.umsdk:oaid_mi:1.0.0' // (可选)
+//    implementation 'com.umeng.umsdk:oaid_oppo:1.0.4' // (可选)
+//    implementation 'com.umeng.umsdk:oaid_vivo:1.0.0.1' // (可选)
 
     //Bugly
     implementation 'com.tencent.bugly:crashreport:latest.release'
@@ -84,4 +101,8 @@ dependencies {
     implementation 'com.github.crosswall:Android-Coverflow:release-v1.0.1'
     //三角标签
     implementation 'com.github.shts:TriangleLabelView:1.1.0'
+    //万能适配器依赖
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50'
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.0'
+    implementation project(path: ':libumengsharelogin')
 }

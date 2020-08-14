@@ -1,10 +1,8 @@
 package com.example.shopping;
 
 import android.os.Bundle;
-import android.widget.FrameLayout;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.FragmentManager;
 
 import com.ashokvarma.bottomnavigation.BottomNavigationBar;
@@ -14,10 +12,10 @@ import com.example.shopping.fragment.CategoryFragment;
 import com.example.shopping.fragment.HomeFragment;
 import com.example.shopping.fragment.MsgFragment;
 import com.example.shopping.fragment.UserFragment;
+import com.trello.rxlifecycle2.components.support.RxAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends RxAppCompatActivity {
     private BottomNavigationBar mBottomNavigationBar;
-    private FrameLayout fl;
     private FragmentManager fm;
     private HomeFragment homeFragment;
     private CategoryFragment categoryFragment;
@@ -35,20 +33,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        fl = (FrameLayout) findViewById(R.id.fl);
         mBottomNavigationBar = (BottomNavigationBar) findViewById(R.id.bottom_navigation_bar);
 
         //底部标题图片的设置
-        BottomNavigationItem homeItem = new BottomNavigationItem(R.drawable.btn_nav_home_press, "首页")
-                .setInactiveIconResource(R.drawable.btn_nav_home_normal);
-        BottomNavigationItem categoryItem = new BottomNavigationItem(R.drawable.btn_nav_category_press, "分类")
-                .setInactiveIconResource(R.drawable.btn_nav_category_normal);
-        BottomNavigationItem cartItem = new BottomNavigationItem(R.drawable.btn_nav_cart_press, "购物车")
-                .setInactiveIconResource(R.drawable.btn_nav_cart_normal);
-        BottomNavigationItem msgItem = new BottomNavigationItem(R.drawable.btn_nav_msg_press, "消息")
-                .setInactiveIconResource(R.drawable.btn_nav_msg_normal);
-        BottomNavigationItem userItem = new BottomNavigationItem(R.drawable.btn_nav_user_press, "我的")
-                .setInactiveIconResource(R.drawable.btn_nav_user_normal);
+        BottomNavigationItem homeItem = new BottomNavigationItem(R.mipmap.btn_nav_home_press, "首页")
+                .setInactiveIconResource(R.mipmap.btn_nav_home_normal);
+        BottomNavigationItem categoryItem = new BottomNavigationItem(R.mipmap.btn_nav_category_press, "分类")
+                .setInactiveIconResource(R.mipmap.btn_nav_category_normal);
+        BottomNavigationItem cartItem = new BottomNavigationItem(R.mipmap.btn_nav_home_press, "购物车")
+                .setInactiveIconResource(R.mipmap.btn_nav_cart_normal);
+        BottomNavigationItem msgItem = new BottomNavigationItem(R.mipmap.btn_nav_msg_press, "消息")
+                .setInactiveIconResource(R.mipmap.btn_nav_msg_normal);
+        BottomNavigationItem userItem = new BottomNavigationItem(R.mipmap.btn_nav_user_press, "我的")
+                .setInactiveIconResource(R.mipmap.btn_nav_user_normal);
 
         mBottomNavigationBar.addItem(homeItem)
                 .addItem(categoryItem)

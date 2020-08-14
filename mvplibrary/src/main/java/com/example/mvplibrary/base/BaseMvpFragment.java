@@ -10,9 +10,12 @@ public abstract class BaseMvpFragment<V extends BaseView, P extends BasePresente
     protected void initData() {
         mPresenter = initPresenter();
         if (mPresenter != null) {
-            mPresenter.attachView((V)this);
+            mPresenter.attachView((V) this);
+            initPData();
         }
     }
+
+    protected abstract void initPData();
 
     protected abstract P initPresenter();
 

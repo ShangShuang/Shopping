@@ -7,9 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.Nullable;
-
-import com.trello.rxlifecycle2.components.RxFragment;
+import com.trello.rxlifecycle2.components.support.RxFragment;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -33,14 +31,12 @@ public abstract class BaseFragment extends RxFragment {
             rootView = inflater.inflate(initLayoutId(), null);
         }
         unbinder = ButterKnife.bind(this, rootView);
+        initView(rootView);
+        initData();
         return rootView;
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        initData();
-    }
+    protected abstract void initView(View rootView);
 
     protected abstract void initData();
 

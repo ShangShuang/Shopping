@@ -4,7 +4,7 @@ import com.example.httplibrary.client.HttpClient;
 import com.example.httplibrary.utils.JsonUtils;
 import com.example.httplibrary.utils.LogUtils;
 import com.example.mvplibrary.model.BaseModel;
-import com.example.shopping.HttpCallBack;
+import com.example.shopping.ui.HttpCallBack;
 import com.example.shopping.wanandroid.Demo;
 import com.google.gson.JsonElement;
 

@@ -52,7 +52,7 @@ public class HttpsManager {
                 LogUtils.e("okhttp====" + message);
             }
         });
-
+        httpLoggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BASIC);
         //自定义拦截器
         Interceptor interceptor = new Interceptor() {
             @Override
